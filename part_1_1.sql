@@ -1,4 +1,6 @@
-CREATE TABLE users (
+DROP TABLE IF EXISTS users;
+
+CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
     gender VARCHAR(10),
     age INTEGER,
@@ -6,8 +8,7 @@ CREATE TABLE users (
     city VARCHAR(50)
 );
 
-\COPY users FROM 'path/to/users.csv' DELIMITER ',' CSV HEADER;
-
+COPY users FROM 'C:\\Code\\WB\\SQL_HW_1\\users.csv' DELIMITER ',' CSV HEADER;
 
 SELECT 
     city,
@@ -20,5 +21,3 @@ SELECT
 FROM users
 GROUP BY city, age_category
 ORDER BY city, buyer_count DESC;
-
-SELECT * FROM users
